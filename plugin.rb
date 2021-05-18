@@ -6,45 +6,6 @@
 # author: Edward Skalibog (@skalibog)
 # url: https://github.com/gotoinc/discourse_sso
 
-ACCESSORS = %i{
-    add_groups
-    admin moderator
-    avatar_force_update
-    avatar_url
-    bio
-    card_background_url
-    email
-    external_id
-    groups
-    locale
-    locale_force_update
-    logout
-    name
-    nonce
-    profile_background_url
-    remove_groups
-    require_activation
-    return_sso_url
-    suppress_welcome_message
-    title
-    username
-    website
-    location
-  }
-
-FIXNUMS = []
-
-BOOLS = %i{
-    admin
-    avatar_force_update
-    locale_force_update
-    logout
-    moderator
-    require_activation
-    suppress_welcome_message
-  }
-
-
 after_initialize do
   SingleSignOn.class_eval do
     def self.parse(payload, sso_secret = nil)
