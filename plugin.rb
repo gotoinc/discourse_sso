@@ -8,6 +8,10 @@
 
 after_initialize do
   SingleSignOn.class_eval do
+    class << self
+      alias_method :original_parse, :parse
+    end
+
     def self.parse(payload, sso_secret = nil, **init_kwargs)
       sso = new(**init_kwargs)
       sso.sso_secret = sso_secret if sso_secret
