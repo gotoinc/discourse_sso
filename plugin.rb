@@ -12,6 +12,45 @@ after_initialize do
       alias_method :original_parse, :parse
     end
 
+    ACCESSORS = %i{
+      add_groups
+      admin moderator
+      avatar_force_update
+      avatar_url
+      bio
+      card_background_url
+      email
+      external_id
+      groups
+      locale
+      locale_force_update
+      logout
+      name
+      nonce
+      profile_background_url
+      remove_groups
+      require_activation
+      return_sso_url
+      suppress_welcome_message
+      title
+      username
+      website
+      location
+    }
+
+    FIXNUMS = []
+
+    BOOLS = %i{
+      admin
+      avatar_force_update
+      locale_force_update
+      logout
+      moderator
+      require_activation
+      suppress_welcome_message
+    }
+
+
     def self.parse(payload, sso_secret = nil, **init_kwargs)
       sso = new(**init_kwargs)
       sso.sso_secret = sso_secret if sso_secret
